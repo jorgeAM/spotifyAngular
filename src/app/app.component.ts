@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+//importamos clase User
+import { User } from './models/user';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  public title = 'Sposhify';
+  public user:User;
+  public identity;
+  public token;
+
+  constructor(){
+  	this.user = new User('', '', '', '', 'ROLE_USER', '');
+  }
 }
