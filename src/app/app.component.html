@@ -13,10 +13,45 @@
   <div *ngIf="!identity" class="row">
     <div class="col-lg-6">
       <h1>Logeate!</h1>
+      <form ngNativeValidate (ngSubmit)="onSubmit()" #loginForm="ngForm" class="col-md-10">
+        <p>
+          <label for="email">Correo Electronico: </label>
+          <input #email="ngModel" [(ngModel)]="user.email" type="email" name="email" class="form-control" required/>
+          <!--alert de validación-->
+          <span [hidden]="email.valid || email.pristine" class="form-control alert alert-danger">
+            Email es requerido
+          </span>
+        </p>
+        <p>
+          <label for="password">Contraseña: </label>
+          <input #password="ngModel" [(ngModel)]="user.password" type="password" name="password" class="form-control" required/>
+          <!--alert de validación-->
+          <span [hidden]="password.valid || password.pristine" class="form-control alert alert-danger">
+            Contraseña es requerida
+          </span>
+        </p>
+        <input type="submit" class="btn btn-success" [disabled]="!loginForm.form.valid" value="Entrar">
+      </form>
     </div>
+
     <div class="col-lg-6">    
       <h1>Registrate</h1>
+      <form class="col-md-10">
+        <p>
+          <label for="name">Nombre: </label>
+          <input type="text" name="name" class="form-control" required>
+        </p>
+        <p>
+          <label for="surname">Apellidos: </label>
+          <input type="text" name="surname" class="form-control" required>
+        </p>
+        <p>
+          <label for="password">Contraseña: </label>
+          <input type="password" name="password" class="form-control" required>
+        </p>
+        <input type="submit" class="btn btn-success" value="Registrar">        
+      </form>
     </div>
   </div>
-  
+
 </div> 
