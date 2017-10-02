@@ -4,6 +4,10 @@
     <h1>
       {{title}}
     </h1>
+    <span>{{identity.name}} - {{identity.email}}</span>
+    <span class="btn btn-danger" (click)="logOut()">
+      Cerrar Sesión
+    </span>
   </div>
 
   <div *ngIf="identity" class="central col-lg-11">

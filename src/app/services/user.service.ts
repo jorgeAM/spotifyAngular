@@ -12,6 +12,8 @@ export class UserService{
 	private headers = new Headers({'Content-Type': 'application/json'});
 	//url de api que usaremos
 	private userUrl = "http://localhost:3100/api/";
+	public identity;
+	public token;
 
 	//constructor
 	constructor(private http: Http){}
@@ -40,6 +42,25 @@ export class UserService{
 	private handleError(error: any): Promise<any> {
 		console.error('Hubo un error ', error);
 		return Promise.reject(error.message || error);
-}
+	}
 
+	getIdentity(){
+		let identity = JSON.parse(localStorage.getItem('identity'));
+		if(identity != "undefined"){
+			this.identity = identity;
+		}else{
+			this.identity = null;
+		}
+		return identity;
+	}
+
+	getToken(){
+		let token = JSON.parse(localStorage.getItem('token'));
+		if(token != "undefined"){
+			this.token = token;
+		}else{
+			this.token = null;
+		}
+		return token;
+	}
 }
