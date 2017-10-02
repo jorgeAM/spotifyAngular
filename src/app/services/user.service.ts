@@ -18,8 +18,11 @@ export class UserService{
 	//constructor
 	constructor(private http: Http){}
 
-	login(){
-
+	register(user: User): Promise<User>{
+		return this.http.post(this.userUrl+'register', JSON.stringify(user), {headers: this.headers})
+			.toPromise()
+			.then(res => res.json().user)
+			.catch(this.handleError)
 	}
 
 	//login

@@ -13,11 +13,13 @@ import { UserService } from './services/user.service';
 export class AppComponent implements OnInit{
   public title = 'Music';
   public user:User;
+  public user_registro:User;
   public identity;
   public token;
 
   constructor(private userService: UserService){
   	this.user = new User('', '', '', '', 'ROLE_USER', '');
+    this.user_registro = new User('', '', '', '', 'ROLE_USER', '');
   }
 
   ngOnInit(){
@@ -56,12 +58,22 @@ export class AppComponent implements OnInit{
       });
   }
 
+  registrar(){
+    this.userService.register(this.user_registro)
+      .then(res => {
+        let user = res;
+        this.user_registro = user;
+
+      });
+  }
+
   //método para cerrar sesión
   logOut(){
     localStorage.removeItem('identity');
     localStorage.removeItem('token')
     this.identity = null;
     this.token = null;
+    this.user = new User('', '', '', '', 'ROLE_USER', '')
     //localStorage.clear();
   }
 }
