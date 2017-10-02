@@ -11,7 +11,7 @@ import { UserService } from './services/user.service';
   providers: [UserService]
 })
 export class AppComponent implements OnInit{
-  public title = 'Sposhify';
+  public title = 'Music';
   public user:User;
   public identity;
   public token;
@@ -21,11 +21,35 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(){
-    let prueba = this.userService.login();
-    console.log(prueba);
+    console.log('corriendo');
   }
 
   onSubmit(){
-    console.log('click');
+    //conseguir datos del usuario identificado, sin el gethash
+    this.userService.signUp(this.user)
+      .then((res) => {
+        let identity = res;
+        this.identity = identity;
+        //si usuario no esta identificado
+        if(!this.identity._id){
+          alert('El usuario no esta correctamente identificado');          
+        }else{
+          //crear elemento en el LocalStorage
+          
+          //conseguir token para enviar a cada peticion http
+          this.userService.signUp(this.user, 'true')
+            .then((res) => {
+              let token = res;
+              this.token = token;
+              //si usuario no esta identificado
+              if(this.token.length <= 0){
+                alert('El token no se ha generado');          
+              }else{
+                console.log(token);
+                console.log(identity);
+              }
+            });
+        }
+      });
   }
 }
