@@ -63,7 +63,6 @@ export class AppComponent implements OnInit{
       .then(res => {
         let user = res;
         this.user_registro = user;
-
       });
   }
 

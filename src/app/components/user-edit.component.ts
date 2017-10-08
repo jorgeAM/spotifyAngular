@@ -11,19 +11,32 @@ import { UserService } from '../services/user.service';
 })
 export class UserEditComponent implements OnInit{
   public title = 'Edita tu usario';
-  public user:User;
+  public user: User;
   public identity;
   public token;
 
   //constructor
   constructor(private userService: UserService){
+    this.identity = this.userService.getIdentity();
+    this.token = this.userService.getToken();
+    this.user = this.identity;
   }
 
   ngOnInit(){
-    this.identity = this.userService.getIdentity();
-    this.token = this.userService.getToken();
-    console.log('identify es '+ this.identity);
-    console.log('token es '+ this.token);
+    //this.user = this.userService.getIdentity();
+    console.log('componente corriendo')
+  }
+
+  actualizar(){
+    this.userService.updateUser(this.user)
+      .then(res => {
+        //igualamos el resultado al usuario
+        //this.user = res;
+        //guardamos en el localStorage
+        localStorage.setItem('identity', JSON.stringify(this.user));
+        document.getElementById('user-name').innerHTML = this.user.name;
+      });
+    console.log(this.user);
   }
 
 }

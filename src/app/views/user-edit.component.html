@@ -1,3 +1,32 @@
 <div *ngIf="identity">
 	<h1>{{title}}</h1>
+
+	<!--formulario-->
+	<form ngNativeValidate (ngSubmit)="actualizar()" #updateForm="ngForm" class="col-md-10">
+        <p>
+          <label for="name">Nombre: </label>
+          <input #name="ngModel" [(ngModel)]="user.name" type="text" name="name" class="form-control" required>
+          <!--alert de validación-->
+          <span [hidden]="name.valid || name.pristine" class="form-control alert alert-danger">
+            Nombre es requerido
+          </span>
+        </p>
+        <p>
+          <label for="surname">Apellidos: </label>
+          <input #surname="ngModel" [(ngModel)]="user.surname" type="text" name="surname" class="form-control" required>
+          <!--alert de validación-->
+          <span [hidden]="surname.valid || surname.pristine" class="form-control alert alert-danger">
+            Apellidos es requerido
+          </span>
+        </p>
+        <p>
+          <label for="email">Correo Electronico: </label>
+          <input #email="ngModel" [(ngModel)]="user.email" type="email" name="email" class="form-control" required>
+          <!--alert de validación-->
+          <span [hidden]="email.valid || email.pristine" class="form-control alert alert-danger">
+            Email es requerido
+          </span>
+        </p>
+        <input type="submit" class="btn btn-success" [disabled]="!updateForm.form.valid" value="Actualizar">
+      </form>
 </div>
