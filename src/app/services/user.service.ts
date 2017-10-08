@@ -10,6 +10,11 @@ import { User } from '../models/user';
 export class UserService{
 	//configuramos cabecera(YA DEFINIDO)
 	private headers = new Headers({'Content-Type': 'application/json'});
+	//cabecera donde mandamos token
+	private headersAuthentication = new Headers({
+		'Content-Type': 'application/json',
+		'Authorization': this.getToken()
+	});
 	//url de api que usaremos
 	private userUrl = "http://localhost:3100/api/";
 	public identity;
@@ -45,6 +50,14 @@ export class UserService{
 	private handleError(error: any): Promise<any> {
 		console.error('Hubo un error ', error);
 		return Promise.reject(error.message || error);
+	}
+
+	updateUser(user_to_update): Promise<User>{
+		return this.http
+			.put(this.userUrl+'update-user/'+user_to_update._id, JSON.stringify(user_to_update), {headers: this.headersAuthentication})
+			.toPromise()
+			.then((res) => res.json().user)
+			.catch(this.handleError);
 	}
 
 	getIdentity(){

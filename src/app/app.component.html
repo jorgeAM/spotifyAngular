@@ -4,10 +4,25 @@
     <h1>
       {{title}}
     </h1>
-    <span>{{identity.name}} - {{identity.email}}</span>
-    <span class="btn btn-danger" (click)="logOut()">
-      Cerrar Sesión
-    </span>
+
+    <nav id="navigation">
+      <a href="#">Buscar</a>
+      <a href="#">Artistas</a>
+      <a href="#">Albums</a>
+    </nav>
+
+    <!--inicio de navegacion-->
+    <nav>
+      <span>{{identity.name}}</span>
+      <span class="btn btn-danger" (click)="logOut()">
+        Cerrar Sesión
+      </span>
+      <span>
+        <a routerLink="/misDatos">Mis datos</a>
+      </span>
+    </nav>
+    <!--fin navegación-->
+    <router-outlet></router-outlet>
   </div>
 
   <div *ngIf="identity" class="central col-lg-11">
