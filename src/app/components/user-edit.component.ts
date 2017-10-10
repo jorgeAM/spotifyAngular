@@ -39,4 +39,10 @@ export class UserEditComponent implements OnInit{
     console.log(this.user);
   }
 
+
+  fileChangeEvent(fileInput: any){
+
+  }
+
+
 }

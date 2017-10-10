@@ -27,6 +27,13 @@
             Email es requerido
           </span>
         </p>
+        <div class="form-group" *ngIf="user.image && user.image !='null'">
+          <img src="">
+        </div>
+        <p>
+          <label for="image">Sube tu foto: </label>
+          <input type="file" name="image">
+        </p>
         <input type="submit" class="btn btn-success" [disabled]="!updateForm.form.valid" value="Actualizar">
       </form>
 </div>
