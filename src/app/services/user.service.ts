@@ -16,7 +16,7 @@ export class UserService{
 		'Authorization': this.getToken()
 	});
 	//url de api que usaremos
-	private userUrl = "http://localhost:3100/api/";
+	public userUrl = "http://localhost:3100/api/";
 	public identity;
 	public token;
 

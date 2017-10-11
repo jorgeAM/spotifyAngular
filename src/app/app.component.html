@@ -13,6 +13,9 @@
 
     <!--inicio de navegacion-->
     <nav>
+      <div class="form-group">
+        <img id="avatar" src="{{this.userService.userUrl + '/get-avatar/' + identity.image}}" style="width: 50px; border-radius: 50%;" />
+      </div>
       <span id="user-name">{{identity.name}}</span>
       <span class="btn btn-danger" (click)="logOut()">
         Cerrar Sesión

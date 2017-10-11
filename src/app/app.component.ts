@@ -18,8 +18,8 @@ export class AppComponent implements OnInit{
   public token;
 
   constructor(private userService: UserService){
-  	this.user = new User('', '', '', '', 'ROLE_USER', '');
-    this.user_registro = new User('', '', '', '', 'ROLE_USER', '');
+  	this.user = new User('', '', '', '', '', 'ROLE_USER', '');
+    this.user_registro = new User('', '', '', '', '', 'ROLE_USER', '');
   }
 
   ngOnInit(){

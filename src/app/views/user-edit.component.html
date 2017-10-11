@@ -28,11 +28,11 @@
           </span>
         </p>
         <div class="form-group" *ngIf="user.image && user.image !='null'">
-          <img src="">
+          <img src="{{this.userService.userUrl + '/get-avatar/' + user.image}}" style="width: 100px;" />
         </div>
         <p>
           <label for="image">Sube tu foto: </label>
-          <input type="file" name="image">
+          <input type="file" name="image" (change)="fileChangeEvent($event)">
         </p>
         <input type="submit" class="btn btn-success" [disabled]="!updateForm.form.valid" value="Actualizar">
       </form>
