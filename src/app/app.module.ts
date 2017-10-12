@@ -6,6 +6,8 @@ import { HttpModule }    from '@angular/http';
 //componentes
 import { AppComponent } from './app.component';
 import { UserEditComponent } from './components/user-edit.component';
+import { ArtistListComponent } from './components/artist-list.component';
+import { HomeComponent } from './components/home.component';
 
 //servicios
 import { UserService } from './services/user.service';
@@ -15,7 +17,9 @@ import { AppRoutingModule } from './app.routing';
 @NgModule({
   declarations: [
     AppComponent,
-    UserEditComponent
+    UserEditComponent,
+    ArtistListComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

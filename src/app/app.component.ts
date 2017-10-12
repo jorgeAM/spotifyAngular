@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+//importamos paquete para seleccionar un artista especifico
+import { Router } from '@angular/router';
 //importamos clase User
 import { User } from './models/user';
 //servicio de user
@@ -17,7 +19,10 @@ export class AppComponent implements OnInit{
   public identity;
   public token;
 
-  constructor(private userService: UserService){
+  constructor(
+    private userService: UserService,
+    private router: Router
+   ){
   	this.user = new User('', '', '', '', '', 'ROLE_USER', '');
     this.user_registro = new User('', '', '', '', '', 'ROLE_USER', '');
   }
@@ -25,8 +30,6 @@ export class AppComponent implements OnInit{
   ngOnInit(){
     this.identity = this.userService.getIdentity();
     this.token = this.userService.getToken();
-    console.log('identify es '+ this.identity);
-    console.log('token es '+ this.token);
   }
 
   //metodo para iniciar sesión
@@ -74,5 +77,7 @@ export class AppComponent implements OnInit{
     this.token = null;
     this.user = new User('', '', '', '', 'ROLE_USER', '')
     //localStorage.clear();
+    //redirijimos a la home
+    this.router.navigate(['/']);
   }
 }

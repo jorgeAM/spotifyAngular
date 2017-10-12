@@ -5,31 +5,33 @@
       {{title}}
     </h1>
 
-    <nav id="navigation">
-      <a href="#">Buscar</a>
-      <a href="#">Artistas</a>
-      <a href="#">Albums</a>
-    </nav>
-
-    <!--inicio de navegacion-->
     <nav>
-      <div class="form-group">
-        <img id="avatar" src="{{this.userService.userUrl + '/get-avatar/' + identity.image}}" style="width: 50px; border-radius: 50%;" />
-      </div>
-      <span id="user-name">{{identity.name}}</span>
-      <span class="btn btn-danger" (click)="logOut()">
-        Cerrar Sesión
-      </span>
-      <span>
-        <a routerLink="/misDatos">Mis datos</a>
-      </span>
-    </nav>
-    <!--fin navegación-->
-    <router-outlet></router-outlet>
-  </div>
+      <ul class="nav justify-content-end">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Buscar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/artistas" routerLinkActive="activo">Artistas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Albums</a>
+        </li>
 
-  <div *ngIf="identity" class="central col-lg-11">
-    <p>Estas logueado en la aplicación</p>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img id="avatar" src="{{this.userService.userUrl + '/get-avatar/' + identity.image}}" style="width: 50px; border-radius: 50%;" />
+            {{identity.name}}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" routerLink="/misDatos">Mis datos</a>
+            <span class="dropdown-item" (click)="logOut()">Cerrar Sesión</span>
+          </div>
+        </li>
+
+      </ul>
+    </nav>
+
+    <router-outlet></router-outlet>
   </div>
 
   <div *ngIf="!identity" class="row">
