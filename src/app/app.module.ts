@@ -7,6 +7,8 @@ import { HttpModule }    from '@angular/http';
 import { AppComponent } from './app.component';
 import { UserEditComponent } from './components/user-edit.component';
 import { ArtistListComponent } from './components/artist-list.component';
+import { ArtistAddComponent } from './components/artist-add.component';
+import { ArtistEditComponent } from './components/artist-edit.component';
 import { HomeComponent } from './components/home.component';
 
 //servicios
@@ -19,6 +21,8 @@ import { AppRoutingModule } from './app.routing';
     AppComponent,
     UserEditComponent,
     ArtistListComponent,
+    ArtistAddComponent,
+    ArtistEditComponent,
     HomeComponent
   ],
   imports: [

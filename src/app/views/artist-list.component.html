@@ -1,4 +1,4 @@
 <div>
 	<h1>{{title}}</h1>
-	<a *ngIf="identity && identity.role == 'ROLE_ADMIN'" href="" class="btn btn-success">Añadir Artista</a>
+	<a *ngIf="identity && identity.role == 'ROLE_USER'" routerLink="/nuevoArtista" class="btn btn-success">Añadir Artista</a>
 </div>

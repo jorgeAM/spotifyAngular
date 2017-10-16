@@ -1,0 +1,31 @@
+<div>
+<h1>{{title}}</h1>
+
+<form ngNativeValidate (ngSubmit)="updateArtist()" #artistForm="ngForm" class="col-md-10">
+	<div class="form-group">
+		<label for="name">Nombre: </label>
+    <input #name="ngModel" [(ngModel)]="artist.name" type="text" name="name" class="form-control" required/>
+    <!--alert de validación-->
+    <span [hidden]="name.valid || name.pristine" class="form-control alert alert-danger">
+      Nombre es requerido
+    </span>
+  </div>
+  <div class="form-group">
+    <label for="description">Descripción: </label>
+    <textarea #description="ngModel" [(ngModel)]="artist.description" name="description" class="form-control" required></textarea>
+    <!--alert de validación-->
+    <span [hidden]="description.valid || description.pristine" class="form-control alert alert-danger">
+      Contraseña es requerida
+    </span>
+  </div>
+  <div class="form-group" *ngIf="is_edit">
+    <div *ngIf="artist.image && artist.image != 'null'">
+      <img src="{{this.userService.userUrl + 'get-artist-image/' + artist.image}}" style="width: 100px;" />
+    </div>
+    <label for="">Sube la imagen del artista</label>
+    <input type="file" name="image" (change)="fileChangeEvent($event)">
+  </div>
+  <input type="submit" class="btn btn-success" [disabled]="!artistForm.form.valid" value="Actualizar">
+</form>
+
+</div> 

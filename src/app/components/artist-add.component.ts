@@ -3,28 +3,29 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 //importamos clase Artist
 import { Artist } from '../models/artist';
-//servicio de user
+//servicio de artist
 import { ArtistService } from '../services/artist.service';
 //servicio de user
 import { UserService } from '../services/user.service';
 
 @Component({
-  selector: 'artist-list',
-  templateUrl: '../views/artist-list.component.html',
+  selector: 'artist-add',
+  templateUrl: '../views/artist-add.component.html',
   providers: [
   	UserService,
   	ArtistService
   ]
 })
-export class ArtistListComponent implements OnInit{
+export class ArtistAddComponent implements OnInit{
 	title = 'Tus Artistas';
-	artist: Artist[];
+	artist = new Artist('', '', '');
 	identity;
 	token;
 
 	constructor(
 		private router: Router,
-		private userService: UserService
+		private userService: UserService,
+		private artistService: ArtistService
 	){
 		this.identity = this.userService.getIdentity();
 		this.token = this.userService.getToken();
@@ -33,6 +34,20 @@ export class ArtistListComponent implements OnInit{
 	ngOnInit(){
 		console.log(this.identity);
 		console.log(this.token);
+	}
+
+	addArtist(){
+		this.artistService.addArtist(this.token, this.artist)
+			.subscribe(res =>{
+				if(!res){
+					console.log('hubo un error Crrano');
+				}else{
+					this.artist = res.artist;
+					console.log(res.artist);
+				}
+			}, err => {
+				console.log(err);
+			})
 	}
 }
   

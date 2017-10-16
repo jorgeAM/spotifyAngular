@@ -1,0 +1,24 @@
+<div>
+<h1>{{title}}</h1>
+
+<form ngNativeValidate (ngSubmit)="addArtist()" #artistForm="ngForm" class="col-md-10">
+	<div class="form-group">
+		<label for="name">Nombre: </label>
+    <input #name="ngModel" [(ngModel)]="artist.name" type="text" name="name" class="form-control" required/>
+    <!--alert de validación-->
+    <span [hidden]="name.valid || name.pristine" class="form-control alert alert-danger">
+      Nombre es requerido
+    </span>
+  </div>
+  <div class="form-group">
+    <label for="description">Descripción: </label>
+    <textarea #description="ngModel" [(ngModel)]="artist.description" name="description" class="form-control" required></textarea>
+    <!--alert de validación-->
+    <span [hidden]="description.valid || description.pristine" class="form-control alert alert-danger">
+      Contraseña es requerida
+    </span>
+  </div>
+  <input type="submit" class="btn btn-success" [disabled]="!artistForm.form.valid" value="Crear">
+</form>
+
+</div> 
