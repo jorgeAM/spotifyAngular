@@ -26,8 +26,6 @@ export class UserEditComponent implements OnInit{
   }
 
   ngOnInit(){
-    //this.user = this.userService.getIdentity();
-    console.log('componente corriendo')
   }
 
   actualizar(){

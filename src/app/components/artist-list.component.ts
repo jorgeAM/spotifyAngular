@@ -31,8 +31,6 @@ export class ArtistListComponent implements OnInit{
 	}
 
 	ngOnInit(){
-		console.log(this.identity);
-		console.log(this.token);
 	}
 }
   

@@ -32,8 +32,6 @@ export class ArtistAddComponent implements OnInit{
 	}
 
 	ngOnInit(){
-		console.log(this.identity);
-		console.log(this.token);
 	}
 
 	addArtist(){
@@ -43,7 +41,7 @@ export class ArtistAddComponent implements OnInit{
 					console.log('hubo un error Crrano');
 				}else{
 					this.artist = res.artist;
-					console.log(res.artist);
+					this.router.navigate(['/editar-artista', res.artist._id]);
 				}
 			}, err => {
 				console.log(err);

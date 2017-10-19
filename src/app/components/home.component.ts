@@ -33,8 +33,6 @@ export class HomeComponent implements OnInit{
 
 
 	ngOnInit(){
-		console.log(this.identity);
-		console.log(this.token);
 	}
 }
   
