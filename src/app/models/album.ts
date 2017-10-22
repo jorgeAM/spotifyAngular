@@ -1,4 +1,4 @@
-export class Song{
+export class Album{
 
 	//constructor
 	constructor(

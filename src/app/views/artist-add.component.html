@@ -2,8 +2,8 @@
 <h1>{{title}}</h1>
 
 <form ngNativeValidate (ngSubmit)="addArtist()" #artistForm="ngForm" class="col-md-10">
-	<div class="form-group">
-		<label for="name">Nombre: </label>
+  <div class="form-group">
+    <label for="name">Nombre: </label>
     <input #name="ngModel" [(ngModel)]="artist.name" type="text" name="name" class="form-control" required/>
     <!--alert de validación-->
     <span [hidden]="name.valid || name.pristine" class="form-control alert alert-danger">

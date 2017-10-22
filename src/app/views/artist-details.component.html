@@ -5,7 +5,7 @@
 	<div class="col-lg-6 col-md-6 col-sm-6">
 		<h1>{{artist.name}}</h1>
 		<p class="capital">{{artist.description}}</p>
-		<a href="#" class="btn btn-info">Añadir Album</a>
+		<a [routerLink]="['/nuevoAlbum', artist._id]" class="btn btn-info">Añadir Album</a>
 	</div>
 </div>
 

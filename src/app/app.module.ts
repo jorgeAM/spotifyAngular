@@ -10,6 +10,7 @@ import { ArtistListComponent } from './components/artist-list.component';
 import { ArtistAddComponent } from './components/artist-add.component';
 import { ArtistEditComponent } from './components/artist-edit.component';
 import { ArtistDetailsComponent } from './components/artist-details.component';
+import { AlbumAddComponent } from './components/album-add.component';
 import { HomeComponent } from './components/home.component';
 
 //servicios
@@ -26,6 +27,7 @@ import { AppRoutingModule } from './app.routing';
     ArtistAddComponent,
     ArtistEditComponent,
     ArtistDetailsComponent,
+    AlbumAddComponent,
     HomeComponent
   ],
   imports: [
