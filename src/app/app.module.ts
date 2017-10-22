@@ -9,10 +9,12 @@ import { UserEditComponent } from './components/user-edit.component';
 import { ArtistListComponent } from './components/artist-list.component';
 import { ArtistAddComponent } from './components/artist-add.component';
 import { ArtistEditComponent } from './components/artist-edit.component';
+import { ArtistDetailsComponent } from './components/artist-details.component';
 import { HomeComponent } from './components/home.component';
 
 //servicios
 import { UserService } from './services/user.service';
+import { ArtistService } from './services/artist.service';
 //routing
 import { AppRoutingModule } from './app.routing';
 
@@ -23,6 +25,7 @@ import { AppRoutingModule } from './app.routing';
     ArtistListComponent,
     ArtistAddComponent,
     ArtistEditComponent,
+    ArtistDetailsComponent,
     HomeComponent
   ],
   imports: [

@@ -21,7 +21,7 @@ import { UploadService } from '../services/upload.service';
 })
 export class ArtistEditComponent implements OnInit{
 	title = 'Edita al Artista';
-	artist = new Artist('', '', '');
+	artist = new Artist('', '', '', '');
 	identity;
 	token;
 	is_edit = true;	

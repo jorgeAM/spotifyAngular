@@ -18,7 +18,7 @@ import { UserService } from '../services/user.service';
 })
 export class ArtistAddComponent implements OnInit{
 	title = 'Tus Artistas';
-	artist = new Artist('', '', '');
+	artist = new Artist('', '', '', '');
 	identity;
 	token;
 

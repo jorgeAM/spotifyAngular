@@ -1,4 +1,16 @@
-<div>
-	<h1>{{title}}</h1>
-	<a *ngIf="identity && identity.role == 'ROLE_USER'" routerLink="/nuevoArtista" class="btn btn-success">Añadir Artista</a>
+<div class="row">
+	<div class="artist col-lg-3 caja" *ngFor="let artist of artists">
+	  <div class="artist__thumbnail">
+	    <img class="artist__blur" src="{{this.userService.userUrl + 'get-artist-image/' + artist.image}}">
+	    <img class="artist__image" src="{{this.userService.userUrl + 'get-artist-image/' + artist.image}}">
+	    <div class="artist__ring"></div>
+	    <div class="artist__ring artist__ring--outer"></div>
+	  </div>
+	  <a class="btn btn-sm btn-info" [routerLink]="['/editar-artista', artist._id]">Editar</a>
+	  <a class="btn btn-sm btn-danger" (click)=eliminar(artist._id)>Eliminar</a>
+	  <div class="artist__label">
+	    <p style="color: white;" [routerLink]="['/artista', artist._id]">{{artist.name}}</p>
+	    <p class="capital">{{artist.description}}</p>
+	  </div>
+	</div>
 </div>

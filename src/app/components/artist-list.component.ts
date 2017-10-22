@@ -11,6 +11,7 @@ import { UserService } from '../services/user.service';
 @Component({
   selector: 'artist-list',
   templateUrl: '../views/artist-list.component.html',
+  styleUrls: ['../styles/artist-list.component.css'],
   providers: [
   	UserService,
   	ArtistService
@@ -18,19 +19,40 @@ import { UserService } from '../services/user.service';
 })
 export class ArtistListComponent implements OnInit{
 	title = 'Tus Artistas';
-	artist: Artist[];
+	artists: Artist[];
 	identity;
 	token;
 
 	constructor(
 		private router: Router,
-		private userService: UserService
+		private userService: UserService,
+		private artistService: ArtistService
 	){
 		this.identity = this.userService.getIdentity();
 		this.token = this.userService.getToken();
 	}
 
 	ngOnInit(){
+		this.artistas();
+	}
+
+	eliminar(id){
+		this.artistService.deleteArtist(this.token, id)
+			.subscribe(res => {
+				this.artistas()
+			}, err => {
+				console.log(err);
+			});
+	}
+
+	artistas(){
+		this.artistService.getArtists(this.token)
+			.subscribe(res => {
+				this.artists = res.artists;
+				console.log(this.artists);
+			}, err =>{
+				console.log(err);
+		});
 	}
 }
   

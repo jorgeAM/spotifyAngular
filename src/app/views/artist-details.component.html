@@ -1,0 +1,14 @@
+<div class="artist col-lg-3 row" *ngIf="artist">
+	<div class="col-lg-6 col-md-6 col-sm-6">
+		<img *ngIf="artist.image && artist.image != 'null'" src="{{this.userService.userUrl + 'get-artist-image/' + artist.image}}" class="img-responsive">
+	</div>
+	<div class="col-lg-6 col-md-6 col-sm-6">
+		<h1>{{artist.name}}</h1>
+		<p class="capital">{{artist.description}}</p>
+		<a href="#" class="btn btn-info">Añadir Album</a>
+	</div>
+</div>
+
+<div id="albums" *ngIf="albums">
+	<!--listar albums-->
+</div>
