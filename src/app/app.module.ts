@@ -11,11 +11,14 @@ import { ArtistAddComponent } from './components/artist-add.component';
 import { ArtistEditComponent } from './components/artist-edit.component';
 import { ArtistDetailsComponent } from './components/artist-details.component';
 import { AlbumAddComponent } from './components/album-add.component';
+import { AlbumEditComponent } from './components/album-edit.component';
 import { HomeComponent } from './components/home.component';
 
 //servicios
 import { UserService } from './services/user.service';
 import { ArtistService } from './services/artist.service';
+import { AlbumService } from './services/album.service';
+import { UploadService } from './services/upload.service';
 //routing
 import { AppRoutingModule } from './app.routing';
 
@@ -28,6 +31,7 @@ import { AppRoutingModule } from './app.routing';
     ArtistEditComponent,
     ArtistDetailsComponent,
     AlbumAddComponent,
+    AlbumEditComponent,
     HomeComponent
   ],
   imports: [
@@ -36,7 +40,13 @@ import { AppRoutingModule } from './app.routing';
     FormsModule,
     HttpModule
   ],
-  providers: [ UserService ],
+  providers: [ 
+    UserService,
+    ArtistService,
+    AlbumService,
+    UploadService
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

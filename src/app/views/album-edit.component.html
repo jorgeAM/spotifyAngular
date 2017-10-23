@@ -1,7 +1,8 @@
 <div style="width: 60%; margin: 0 auto;">
 	<h1>{{titulo}}</h1>
 
-	<form ngNativeValidate (ngSubmit)="addAlbum()" #albumForm="ngForm" class="col-md-10">
+	<form ngNativeValidate (ngSubmit)="updateAlbum()" #artistForm="ngForm" class="col-md-10">
+		
 		<div class="form-group">
 			<label for="title">Titulo: </label>
 	    <input #title="ngModel" [(ngModel)]="album.title" type="text" name="title" class="form-control" required/>
@@ -26,8 +27,15 @@
 	      Año es requerido
 	    </span>
 	  </div>
+	  <div class="form-group">
+	    <div *ngIf="album.image && album.image != 'null'">
+	      <img src="{{this.userService.userUrl + 'get-album-image/' + album.image}}" style="width: 100px;" />
+	    </div>
+	    <label for="">Sube la imagen del artista</label>
+	    <input type="file" name="image" (change)="fileChangeEvent($event)">
+	  </div>
 
-	  <input type="submit" class="btn btn-success" [disabled]="!albumForm.form.valid" value="Crear">
+	  <input type="submit" class="btn btn-success" [disabled]="!artistForm.form.valid" value="Actualizar">
 	</form>
 
 </div> 

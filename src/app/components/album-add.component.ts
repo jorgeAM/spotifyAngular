@@ -23,8 +23,7 @@ import { AlbumService } from '../services/album.service';
 })
 export class AlbumAddComponent implements OnInit{
 	titulo = 'Añade un nuevo Album';
-	artist: Artist;
-	album = new Album('', '', 0 ,'', '');
+	album = new Album('', '', 0, '', '');
 	identity;
 	token;
 
@@ -52,7 +51,8 @@ export class AlbumAddComponent implements OnInit{
 					if(!res.album){
 						console.log('error')
 					}else {
-						this.album = res.albums;
+						this.album = res.album;
+						this.router.navigate(['album', res.album._id])
 					}
 				}, err => {
 					console.log(err);
