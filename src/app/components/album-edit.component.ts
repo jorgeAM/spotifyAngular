@@ -7,7 +7,7 @@ import { Artist } from '../models/artist';
 import { Album } from '../models/album';
 //servicio de user
 import { UserService } from '../services/user.service';
-//servicio de artist
+//servicio de album
 import { AlbumService } from '../services/album.service';
 //servicio para subir imagen
 import { UploadService } from '../services/upload.service';
@@ -51,7 +51,6 @@ export class AlbumEditComponent implements OnInit{
 						console.log('ERROR')
 					}else {
 						this.album = res.album;
-						console.log(this.album);
 					}
 				}, err => {
 					console.log(err);
@@ -66,7 +65,7 @@ export class AlbumEditComponent implements OnInit{
 				.subscribe(res => {
 					//subir portada del album
 					if(!this.filesToUpload){
-						console.log('no se subio archivo')
+						this.router.navigate(['/artista', res.album.artist]);
 					}else{
 						this.upload.makeFileRequest(
 						this.albumService.AlbumtUrl+'upload-image-album/'+id,
@@ -75,7 +74,6 @@ export class AlbumEditComponent implements OnInit{
 						this.token,
 						'image')
 						.then(response => {
-							console.log(this.album.artist)
 							this.router.navigate(['/artista', res.album.artist]);
 						}, err => {
 							console.log(err);

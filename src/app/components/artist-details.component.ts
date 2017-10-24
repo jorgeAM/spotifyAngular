@@ -3,8 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 //importamos clase Artist
 import { Artist } from '../models/artist';
+//importamos clase Album
+import { Album } from '../models/album';
 //servicio de artist
 import { ArtistService } from '../services/artist.service';
+//servicio de album
+import { AlbumService } from '../services/album.service';
 //servicio de user
 import { UserService } from '../services/user.service';
 
@@ -14,12 +18,14 @@ import { UserService } from '../services/user.service';
   styleUrls: ['../styles/artist-details.component.css'],
   providers: [
   	UserService,
-  	ArtistService
+  	ArtistService,
+  	AlbumService
   ]
 })
 export class ArtistDetailsComponent implements OnInit{
 	title = 'Tu Artista';
 	artist: Artist;
+	albums: Album[];
 	identity;
 	token;
 
@@ -27,7 +33,8 @@ export class ArtistDetailsComponent implements OnInit{
 		private route: ActivatedRoute,
 		private router: Router,
 		private userService: UserService,
-		private artistService: ArtistService
+		private artistService: ArtistService,
+		private albumService: AlbumService
 	){
 		this.identity = this.userService.getIdentity();
 		this.token = this.userService.getToken();
@@ -43,12 +50,32 @@ export class ArtistDetailsComponent implements OnInit{
 					}else{
 						this.artist = res.artist;
 						//sacar albums
+						this.albumService.getAlbums(this.token, this.artist._id)
+							.subscribe(res => {
+								this.albums = res.albums;
+							}, err => {
+								console.log(err);
+							})
 					}
 
 				}, err => {
 					console.log(err);
 				})
 		});
+	}
+
+	eliminar(id){
+		this.albumService.deleteAlbum(this.token, id)
+			.subscribe(() => {
+				this.albumService.getAlbums(this.token, this.artist._id)
+					.subscribe(res => {
+						this.albums = res.albums;
+					}, err => {
+						console.log(err);
+					})
+			}, err => {
+				console.log(err);
+			});
 	}
 }
   

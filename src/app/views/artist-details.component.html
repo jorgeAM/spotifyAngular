@@ -1,6 +1,6 @@
 <div class="artist col-lg-3 row" *ngIf="artist">
 	<div class="col-lg-6 col-md-6 col-sm-6">
-		<img *ngIf="artist.image && artist.image != 'null'" src="{{this.userService.userUrl + 'get-artist-image/' + artist.image}}" class="img-responsive">
+		<img *ngIf="artist.image && artist.image != 'null'" src="{{this.userService.userUrl + 'get-artist-image/' + artist.image}}" class="artista">
 	</div>
 	<div class="col-lg-6 col-md-6 col-sm-6">
 		<h1>{{artist.name}}</h1>
@@ -11,4 +11,15 @@
 
 <div id="albums" *ngIf="albums">
 	<!--listar albums-->
+	<div *ngFor="let album of albums" class="row">
+		<img *ngIf="album.image && album.image != 'null'" src="{{this.userService.userUrl + 'get-album-image/' + album.image}}" class="album col-lg-6 col-md-6 col-sm-6">
+		<div class="col-lg-6 col-md-6 col-sm-6 no-margin">
+			<a>{{album.title}}</a>
+			<p>{{album.description}}</p>
+			<p>{{album.year}}</p>
+			<a [routerLink]="['/artista', artist._id]">By: {{album.artist.name}}</a>
+			<a class="btn btn-sm btn-info" [routerLink]="['/album', album._id]">Editar</a>
+		  <a class="btn btn-sm btn-danger" (click)=eliminar(album._id)>Eliminar</a>
+	  </div>
+	</div>
 </div>

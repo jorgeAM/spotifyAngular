@@ -23,14 +23,19 @@ export class AlbumService{
 			.map(res => res.json());
 	}
 
-	getAlbums(token, artistId){
+	getAlbums(token, artistId = null){
 		//cabecera donde mandamos token
 		let headers = new Headers({
 			'Content-Type': 'application/json',
 			'Authorization': token
 		});
-		return this.http.get(this.AlbumtUrl+'albums/'+artistId, {headers: headers})
-		.map(res => res.json());
+		if(artistId != null){
+			return this.http.get(this.AlbumtUrl+'albums/'+artistId, {headers: headers})
+				.map(res => res.json());
+		}else{
+			return this.http.get(this.AlbumtUrl+'albums', {headers: headers})
+				.map(res => res.json());
+		}
 	}
 
 

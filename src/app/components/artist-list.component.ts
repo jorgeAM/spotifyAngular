@@ -49,7 +49,6 @@ export class ArtistListComponent implements OnInit{
 		this.artistService.getArtists(this.token)
 			.subscribe(res => {
 				this.artists = res.artists;
-				console.log(this.artists);
 			}, err =>{
 				console.log(err);
 		});

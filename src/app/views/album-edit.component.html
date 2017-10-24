@@ -31,7 +31,7 @@
 	    <div *ngIf="album.image && album.image != 'null'">
 	      <img src="{{this.userService.userUrl + 'get-album-image/' + album.image}}" style="width: 100px;" />
 	    </div>
-	    <label for="">Sube la imagen del artista</label>
+	    <label for="">Sube la portada</label>
 	    <input type="file" name="image" (change)="fileChangeEvent($event)">
 	  </div>
 

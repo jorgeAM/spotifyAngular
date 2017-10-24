@@ -60,19 +60,22 @@ export class ArtistEditComponent implements OnInit{
 			let id = params['id'];
 			this.artistService.updateArtist(this.token, id, this.artist)
 				.subscribe(res =>{
-					//subir imagen de artista
-					this.upload.makeFileRequest(
-						this.artistService.artistUrl+'upload-image-artist/'+id,
-						[],
-						this.filesToUpload,
-						this.token,
-						'image')
+					if(!this.filesToUpload){
+						this.router.navigate(['/artista', res.artist._id]);
+					}else{
+						//subir imagen de artista
+						this.upload.makeFileRequest(
+							this.artistService.artistUrl+'upload-image-artist/'+id,
+							[],
+							this.filesToUpload,
+							this.token,
+							'image')
 						.then(res => {
 							this.router.navigate(['/']);
 						}, err => {
 							console.log(err);
 						})
-					console.log(this.artist);
+					}
 				}, err => {
 					console.log(err);
 				});
@@ -83,7 +86,6 @@ export class ArtistEditComponent implements OnInit{
 	fileChangeEvent(fileInput: any){
 	    //target.files -> recoge los archivos que seleccionamos
 	    this.filesToUpload = <Array<File>>fileInput.target.files;
-	    console.log(this.filesToUpload);
   	}
 }
   

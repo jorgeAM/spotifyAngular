@@ -1,4 +1,14 @@
-img{
+.artista{
 	border-radius: 50%;
 	width: 80%;
+}
+
+.album{
+	width: 140px;
+	height: 140px;
+}
+
+.no-margin{
+	margin: 0px;
+	margin-bottom: 1em;
 }
