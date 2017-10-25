@@ -1,4 +1,4 @@
-<div class="artist col-lg-3 row" *ngIf="artist">
+<div class="album row" *ngIf="artist">
 	<div class="col-lg-6 col-md-6 col-sm-6">
 		<img *ngIf="artist.image && artist.image != 'null'" src="{{this.userService.userUrl + 'get-artist-image/' + artist.image}}" class="artista">
 	</div>
@@ -14,7 +14,7 @@
 	<div *ngFor="let album of albums" class="row">
 		<img *ngIf="album.image && album.image != 'null'" src="{{this.userService.userUrl + 'get-album-image/' + album.image}}" class="album col-lg-6 col-md-6 col-sm-6">
 		<div class="col-lg-6 col-md-6 col-sm-6 no-margin">
-			<a>{{album.title}}</a>
+			<a [routerLink]="['/detalle-album', album._id]">{{album.title}}</a>
 			<p>{{album.description}}</p>
 			<p>{{album.year}}</p>
 			<a [routerLink]="['/artista', artist._id]">By: {{album.artist.name}}</a>

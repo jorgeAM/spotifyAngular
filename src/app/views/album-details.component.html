@@ -1,0 +1,20 @@
+<div *ngIf="album" class="row">
+	<div class="col-lg-6 col-md-6">
+		<div class="portada">
+			<img *ngIf="album.image && album.image != 'null'" src="{{this.userService.userUrl + 'get-album-image/' + album.image}}" class="artista">
+		</div>
+		<div class="row">
+			<div class="ccol-lg-6 col-md-6 col-sm-6">
+				<p>{{album.title}}</p>
+				<p>{{album.description}}</p>
+				<p>{{album.year}}</p>
+			</div>
+			<div class="ccol-lg-6 col-md-6 col-sm-6">
+				<a href="#" class="btn btn-info">Añadir Canción</a>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-6 col-md-6">
+		<h1>Canciones</h1>
+	</div>
+</div>
