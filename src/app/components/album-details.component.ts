@@ -5,8 +5,8 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Song } from '../models/song';
 //importamos clase Album
 import { Album } from '../models/album';
-//servicio de artist
-import { ArtistService } from '../services/artist.service';
+//servicio de song
+import { SongService } from '../services/song.service';
 //servicio de album
 import { AlbumService } from '../services/album.service';
 //servicio de user
@@ -18,7 +18,7 @@ import { UserService } from '../services/user.service';
   styleUrls: ['../styles/album-details.component.css'],
   providers: [
   	UserService,
-  	ArtistService,
+  	SongService,
   	AlbumService
   ]
 })
@@ -33,7 +33,8 @@ export class AlbumDetailsComponent implements OnInit{
 		private route: ActivatedRoute,
 		private router: Router,
 		private userService: UserService,
-		private albumService: AlbumService
+		private albumService: AlbumService,
+		private songService: SongService
 	){
 		this.identity = this.userService.getIdentity();
 		this.token = this.userService.getToken();
@@ -49,6 +50,11 @@ export class AlbumDetailsComponent implements OnInit{
 					}else{
 						this.album = res.album;
 						//sacar canciones
+						this.songService.getSongs(this.token, id)
+							.subscribe(res => {
+								this.songs = res.songs;
+								console.log(this.songs);
+							});
 					}
 
 				}, err => {

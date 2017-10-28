@@ -1,0 +1,33 @@
+<div style="width: 60%; margin: 0 auto;">
+	<h1>{{titulo}}</h1>
+
+	<form ngNativeValidate (ngSubmit)="addSong()" #SongForm="ngForm" class="col-md-10">
+		<div class="form-group">
+			<label for="number">Numero: </label>
+	    <input #number="ngModel" [(ngModel)]="song.number" type="text" name="number" class="form-control" required/>
+	    <!--alert de validación-->
+	    <span [hidden]="number.valid || number.pristine" class="form-control alert alert-danger">
+	      Número es requerido
+	    </span>
+	  </div>
+	  <div class="form-group">
+	    <label for="name">Nombre: </label>
+	    <input #name="ngModel" [(ngModel)]="song.name" name="name" class="form-control" required/>
+	    <!--alert de validación-->
+	    <span [hidden]="name.valid || name.pristine" class="form-control alert alert-danger">
+	      Nombre es requerida
+	    </span>
+	  </div>
+	  <div class="form-group">
+			<label for="duration">Duración: </label>
+	    <input #duration="ngModel" [(ngModel)]="song.duration" type="text" name="duration" class="form-control" required/>
+	    <!--alert de validación-->
+	    <span [hidden]="duration.valid || duration.pristine" class="form-control alert alert-danger">
+	      Año es requerido
+	    </span>
+	  </div>
+
+	  <input type="submit" class="btn btn-success" [disabled]="!SongForm.form.valid" value="Crear">
+	</form>
+
+</div> 

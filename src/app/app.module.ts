@@ -13,12 +13,14 @@ import { ArtistDetailsComponent } from './components/artist-details.component';
 import { AlbumAddComponent } from './components/album-add.component';
 import { AlbumEditComponent } from './components/album-edit.component';
 import { AlbumDetailsComponent } from './components/album-details.component';
+import { SongAddComponent } from './components/song-add.component';
 import { HomeComponent } from './components/home.component';
 
 //servicios
 import { UserService } from './services/user.service';
 import { ArtistService } from './services/artist.service';
 import { AlbumService } from './services/album.service';
+import { SongService } from './services/song.service';
 import { UploadService } from './services/upload.service';
 //routing
 import { AppRoutingModule } from './app.routing';
@@ -34,6 +36,7 @@ import { AppRoutingModule } from './app.routing';
     AlbumAddComponent,
     AlbumEditComponent,
     AlbumDetailsComponent,
+    SongAddComponent,
     HomeComponent
   ],
   imports: [
@@ -46,6 +49,7 @@ import { AppRoutingModule } from './app.routing';
     UserService,
     ArtistService,
     AlbumService,
+    SongService,
     UploadService
 
   ],

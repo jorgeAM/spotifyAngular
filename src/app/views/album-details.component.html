@@ -10,11 +10,22 @@
 				<p>{{album.year}}</p>
 			</div>
 			<div class="ccol-lg-6 col-md-6 col-sm-6">
-				<a href="#" class="btn btn-info">Añadir Canción</a>
+				<a [routerLink]="['/nuevaCancion', album._id]" class="btn btn-info">Añadir Canción</a>
 			</div>
 		</div>
 	</div>
-	<div class="col-lg-6 col-md-6">
-		<h1>Canciones</h1>
+	<div id="albums" *ngIf="songs" class="col-lg-5 col-md-5" style="margin-left: 1em;">
+		<!--listar albums-->
+		<div *ngFor="let song of songs" class="row">
+			<div class="row no-margin">
+				<p class="col-sm-3 col-md-3">{{song.number}}</p>
+				<a class="col-sm-3 col-md-3" [routerLink]="['/home']">{{song.name}}</a>
+				<p class="col-sm-3 col-md-3">{{song.duration}}</p>
+				<a class="col-sm-3 col-md-3" [routerLink]="['/home']">By: {{song.album.artist.name}}</a>
+				<a class="btn btn-info" [routerLink]="['/home']">✔</a>
+			  	<a class="btn btn-danger" (click)=eliminar(song._id)>✕</a>
+		  </div>
 	</div>
+</div>
+
 </div>
