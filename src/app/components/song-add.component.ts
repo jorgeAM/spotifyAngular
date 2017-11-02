@@ -46,8 +46,7 @@ export class SongAddComponent implements OnInit{
 						console.log('error')
 					}else {
 						this.song = res.song;
-						console.log(this.song);
-						//this.router.navigate(['album', res.album._id])
+						this.router.navigate(['detalle-album', this.song.album])
 					}
 				}, err => {
 					console.log(err);

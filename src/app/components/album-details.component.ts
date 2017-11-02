@@ -53,7 +53,6 @@ export class AlbumDetailsComponent implements OnInit{
 						this.songService.getSongs(this.token, id)
 							.subscribe(res => {
 								this.songs = res.songs;
-								console.log(this.songs);
 							});
 					}
 
@@ -61,6 +60,20 @@ export class AlbumDetailsComponent implements OnInit{
 					console.log(err);
 				})
 		});
+	}
+
+	eliminar(id){
+		this.songService.deleteSong(this.token, id)
+			.subscribe(() => {
+				this.songService.getSongs(this.token)
+					.subscribe(res => {
+						this.songs = res.songs;
+					}, err => {
+						console.log(err);
+					})
+			}, err => {
+				console.log(err);
+			});
 	}
 
 }

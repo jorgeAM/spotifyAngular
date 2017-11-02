@@ -8,6 +8,7 @@
 				<p>{{album.title}}</p>
 				<p>{{album.description}}</p>
 				<p>{{album.year}}</p>
+				<p>{{album.artist.name}}</p>
 			</div>
 			<div class="ccol-lg-6 col-md-6 col-sm-6">
 				<a [routerLink]="['/nuevaCancion', album._id]" class="btn btn-info">Añadir Canción</a>
@@ -15,15 +16,16 @@
 		</div>
 	</div>
 	<div id="albums" *ngIf="songs" class="col-lg-5 col-md-5" style="margin-left: 1em;">
-		<!--listar albums-->
+		<!--listar songs-->
 		<div *ngFor="let song of songs" class="row">
 			<div class="row no-margin">
-				<p class="col-sm-3 col-md-3">{{song.number}}</p>
-				<a class="col-sm-3 col-md-3" [routerLink]="['/home']">{{song.name}}</a>
-				<p class="col-sm-3 col-md-3">{{song.duration}}</p>
-				<a class="col-sm-3 col-md-3" [routerLink]="['/home']">By: {{song.album.artist.name}}</a>
-				<a class="btn btn-info" [routerLink]="['/home']">✔</a>
+				<div class="col-lg-6 col-md-6 col-sm-6">
+					<p>{{song.number+ '. ' +song.name+ ' - ' +song.duration}}</p>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-6">
+					<a class="btn btn-info" [routerLink]="['/cancion', song._id]">✔</a>
 			  	<a class="btn btn-danger" (click)=eliminar(song._id)>✕</a>
+				</div>
 		  </div>
 	</div>
 </div>

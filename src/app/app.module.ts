@@ -14,6 +14,7 @@ import { AlbumAddComponent } from './components/album-add.component';
 import { AlbumEditComponent } from './components/album-edit.component';
 import { AlbumDetailsComponent } from './components/album-details.component';
 import { SongAddComponent } from './components/song-add.component';
+import { SongEditComponent } from './components/song-edit.component';
 import { HomeComponent } from './components/home.component';
 
 //servicios
@@ -37,6 +38,7 @@ import { AppRoutingModule } from './app.routing';
     AlbumEditComponent,
     AlbumDetailsComponent,
     SongAddComponent,
+    SongEditComponent,
     HomeComponent
   ],
   imports: [
