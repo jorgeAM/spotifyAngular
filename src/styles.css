@@ -7,3 +7,26 @@ body{
 	border-bottom: 4px solid #84bd00;
 	padding-bottom: 1em;
 }
+
+.player{
+	color: white;
+	background: #1c1c1f;
+	position: fixed;
+	width: 90.2%;
+	bottom: 0;
+	padding: 20px;
+	margin-left: -15px;
+	border-left: 1px solid #444;
+}
+
+.player .audio-file{
+	width: 85%;
+	height: 40px;
+	margin-top: 20px;
+	margin-left: 10px;
+	float: left;
+}
+
+.player audio{
+	width: 100%;
+}

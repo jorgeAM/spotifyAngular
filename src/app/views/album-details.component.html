@@ -11,7 +11,7 @@
 				<p>{{album.artist.name}}</p>
 			</div>
 			<div class="ccol-lg-6 col-md-6 col-sm-6">
-				<a [routerLink]="['/nuevaCancion', album._id]" class="btn btn-info">Añadir Canción</a>
+				<a (click)="startPlayer(song)" class="btn btn-info">Añadir Canción</a>
 			</div>
 		</div>
 	</div>
@@ -19,10 +19,15 @@
 		<!--listar songs-->
 		<div *ngFor="let song of songs" class="row">
 			<div class="row no-margin">
-				<div class="col-lg-6 col-md-6 col-sm-6">
+				<div>
+					<a href="" class="btn btn-success">
+						play
+					</a>
+				</div>
+				<div class="col-lg col-md col-sm">
 					<p>{{song.number+ '. ' +song.name+ ' - ' +song.duration}}</p>
 				</div>
-				<div class="col-lg-6 col-md-6 col-sm-6">
+				<div class="col-lg col-md col-sm">
 					<a class="btn btn-info" [routerLink]="['/cancion', song._id]">✔</a>
 			  	<a class="btn btn-danger" (click)=eliminar(song._id)>✕</a>
 				</div>

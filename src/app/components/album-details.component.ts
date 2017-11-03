@@ -76,5 +76,12 @@ export class AlbumDetailsComponent implements OnInit{
 			});
 	}
 
+	startPlayer(song){
+		localStorage.setItem('song',JSON.stringify(song));
+		//document.getElementById("mp3-src").setAttribute("src",this.songService.SongtUrl+'get-song-file/'+song.file)
+		//(document.getElementById("player") as any).load();
+		//(document.getElementById("player") as any).play();
+	}
+
 }
   
